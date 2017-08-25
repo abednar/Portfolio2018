@@ -4,53 +4,132 @@
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="Realizo trabajos de Diseño Gráfico, Diseño Web, Programación Web | Identidad Corporativa, Producción Gráfica, Edición de Video, Newsletter, E-commerce, Páginas Empresariales en Facebook y más. Contactame al 15-6537-0874. ">
+    <meta name="keywords" content="diseño web, diseño gráfico, multimedia, tarjetas personales, programacion web, ecommerce, dipticos, tripticos, diseño en caballito, diseño para empresas, newsletter, carrito de compras, edicion de video, ariel bednar, diseñador, portfolio">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+    <link rel="icon" href="favicon.ico" type="image/x-icon">
 
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="css/bootstrap.min.css">
-    <link rel="stylesheet" href="css/estilos.css">
-    <link rel="stylesheet" href="js/fullPage.js/dist/jquery.fullpage.css">
+    <link rel="stylesheet" href="css/estilos.css"> 
+    <link rel="stylesheet" href="css/animate.min.css"> 
+    <link rel="stylesheet" href="css/font-awesome.min.css"> 
+
   </head>
-  <body>
-    <div id="fullpage">
-      <div class="section">
-         <div class="container">
-          <h2>Inicio</h2>
-        </div>
-      </div>
-      <div class="section">
-        <div class="container">
-          <h2>Servicios</h2>
-        </div>
-      </div>
-      <div class="section">
-        <div class="container">
-          <h2>Habilidades</h2>
-        </div>
-      </div>
-      <div class="section">
-        <div class="container">
-          <h2>Portfolio</h2>
-        </div>
-      </div>
-      <div class="section">
-        <div class="container">
-          <h2>Contacto</h2>
-        </div>
-      </div>
+  <body>      
+      <div class="general container-fluid">        
+          <header>
+          <div class="container">
+            <div class="row">
+              <div class="col-6 text-left">        
+                <a href="https://github.com/abednar" target="_blank"><i class="fa fa-github fa-2x" aria-hidden="true"></i></a>
+                <a href="https://es-la.facebook.com/ab.DisenoyDesarrolloWeb/" target="_blank"><i class="fa fa-facebook fa-2x" aria-hidden="true"></i></a>
+                <a href="https://ar.linkedin.com/in/arielbednar" target="_blank"><i class="fa fa-linkedin fa-2x" aria-hidden="true"></i></a>
+              </div>  
+              <div class="col-6 text-right">        
+                <ul class="idioma">
+                  <li><a href="#">Español</a></li>
+                  <li><a href="#">Inglés</a></li>
+                </ul>
+              </div>  
+            </div>  
+          </div>
+          </header>
+          <nav>
+            <ul>
+              <li><a href="#inicio">Inicio</a></li>
+              <li><a href="#servicios">Servicios</a></li>
+              <li><a href="#habilidades">Habilidades</a></li>
+              <li><a href="#portfolio">Portfolio</a></li>
+              <li><a href="#contacto">Contacto</a></li>
+            </ul>
+          </nav>
+          <div class="container">
+            <div class="col-12 text-center">      
+              <span id="servicios-logo"></span>
+            </div>
+          </div>
+          <div id="parrafo"></div>
+
+          <section class="pagina" id="inicio">
+            Seccion Inicio
+          </section>
+          <section class="pagina" id="servicios">
+            Seccion Servicios
+          </section>
+          <section class="pagina" id="habilidades">
+            Seccion Habilidades
+          </section>
+          <section class="pagina" id="portfolio">
+            Seccion Portfolio
+          </section>
+          <section class="pagina" id="contacto">
+            Seccion Contacto
+          </section>     
+          <footer>
+            <div class="container text-center">
+              Copyrigth @arielbednar
+            </div>
+          </footer>       
     </div>
-   
+
+    <div id="preloader"></div>
     <!-- Optional JavaScript -->
     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
-    <script src="js/jquery-slim.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.1.0.js"></script>
+    <!--<script src="js/jquery-slim.min.js"></script>-->
     <script src="js/popper.min.js"></script>
     <script src="js/bootstrap.min.js"></script>
-    <script src="js/fullPage.js/jquery.fullPage.min.js"></script>
-    <script type="text/javascript">
-      $(document).ready(function() {
-        $('#fullpage').fullpage({
-          sectionsColor: ['#f2f2f2', '#4BBFC3', '#7BAABE', 'whitesmoke', '#ccddff']
-        });
+    <script src="js/typed.min.js"></script>
+    <script type="text/javascript">  
+
+      /* PRE-CARGA */
+      $(window).on('load', function () {
+        console.log('termino la carga');
+        $('#preloader').hide('slow',function(){$(this).remove();});
+         $("#parrafo").text("Termino la carga()");
       });
-    </script>
+    
+      $(document).ready(function() { 
+        console.log('arranco la carga');    
+        $("#parrafo").text("Probando la función ready()");
+
+         // Add smooth scrolling to all links
+        $("nav ul li a").on('click', function(event) {
+          console.log("hice click");
+
+          // Make sure this.hash has a value before overriding default behavior
+          if (this.hash !== "") {
+            console.log(this.hash);
+            // Prevent default anchor click behavior
+            event.preventDefault();
+
+            // Store hash
+            var hash = this.hash;
+
+            // Using jQuery's animate() method to add smooth page scroll
+            // The optional number (800) specifies the number of milliseconds it takes to scroll to the specified area
+            $('html, body').animate({
+              scrollTop: $(hash).offset().top
+            }, 800, function(){
+         
+              // Add hash (#) to URL when done scrolling (default click behavior)
+              window.location.hash = hash;
+            });
+          } // End if
+        });
+
+        /* TIPEO LOS SERVICIOS PARA EL LOGO */
+        var typed3 = new Typed('#servicios-logo', {
+          strings: ['Diseño Web.', 'Desarrollo Web.', 'Diseño Gráfico.'],
+          typeSpeed: 100,
+          backSpeed: 50,
+          smartBackspace: true,
+          loop: true
+        });
+
+      });      
+     
+     </script>
   </body>
 </html>
